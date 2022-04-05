@@ -1,0 +1,94 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+class parent {
+public :
+    virtual void v_print() {
+        cout << "parent" << "\n";
+    }
+    void print() {
+        cout << "parent" << "\n";
+    }
+};
+ 
+class child : public parent {
+public :
+    void v_print() {
+        cout << "child" << "\n";
+    }
+    void print() {
+        cout << "child" << "\n";
+    }
+};
+ 
+int main() {
+    parent* p;
+    child c;
+    p = &c;
+ 
+    p->v_print();
+    p->print();
+ 
+    return 0;
+}
+
+------------------------------------------------------------------------------
+child
+
+parent
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+#include <iostream>
+ 
+using namespace std;
+ 
+class parent {
+public :
+    void print1() {
+        cout << "parent print1" << "\n";
+    }
+    virtual void print2() {
+        cout << "parent print2" << "\n";
+    }
+    virtual void print3() {
+        cout << "parent print3" << "\n";
+    }
+};
+ 
+class child : public parent {
+public :
+    void print2() {
+        cout << "child print2" << "\n";
+    }
+    void print3(int x) {
+        cout << "child print3" << "\n";
+    }
+};
+ 
+int main() {
+    parent* p;
+    child c;
+    p = &c;
+ 
+    p->print1();
+    p->print2();
+    p->print3();    
+ 
+    return 0;
+}
+
+
+------------------------------------------------------------------------------
+parent print1
+
+child print2
+
+parent print3
+------------------------------------------------------------------------------
+
+
+출처: https://yeolco.tistory.com/125 [열코의 프로그래밍 일기]
