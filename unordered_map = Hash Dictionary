@@ -1,0 +1,5 @@
+std::map = BST Dictionary -> "key"에 따라 정렬됨 
+std::unordered_map = Hash Dictionary -> "Hash 값"에 따라 정렬됨
+해쉬 테이블 기반이며, 탐색 시간이 O(1) -> element 수가 적어 충돌이 없을 경우 빠름
+최악의 경우 O(n) ( element 수가 많으면 버킷의 충돌로 인해 성능이 떨어짐) 
+버킷 때문에 메모리 사용량이 증가
