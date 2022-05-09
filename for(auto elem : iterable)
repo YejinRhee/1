@@ -1,0 +1,9 @@
+for(auto elem : iterable)
+for (Type elem : container)
+여기서 elem은 iterable(vector, list 등)의 원소의 복사본! 
+따라서 elem을 변경하려 해도 변경 안됨
+단, 참조자(auto& elem)로 받는다면 변경 가능
+
+
+https://openmynotepad.tistory.com/15
+
