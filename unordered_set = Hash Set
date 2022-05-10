@@ -1,0 +1,12 @@
+unordered_set = Hash Set
+원소를 해시 함수로 찾으니까 정렬될 필요가 없음
+해시 함수 값이 동일하게 나오면 같은 버킷에 저장
+ 
+ Set = BST Set
+ 같은 원소로 이미 들어있다면 나중에 오는 insert는 무시
+ 자동 정렬됨
+ 
+ 
+ 
+ 
+ https://ansohxxn.github.io/stl/set/
