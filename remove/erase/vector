@@ -1,0 +1,66 @@
+remove 함수의 특징
+remove 함수를 통해 vector의 특정 값을 삭제한다고 할 때, 해당 값이 삭제가 되어 그만큼 vector의 사이즈가 줄어드는 것이 아니라, 삭제된 값이 다른 값으로 대체된다. 이 때 대체되어 들어가는 값은 주어진 범위에서 가장 뒤쪽에 있는 값(들)이 들어간다.
+
+❗ 주의할 점은 그렇다고 해서 삭제된 값이 있던 위치에 그대로 대체되는 값이 들어가는 것이 아니라, 인자로 주었던 범위의 맨 뒤에 들어가게 된다.
+
+예를 들어 vector에 1 2 3 4 5 가 들어있고 전체 범위에서 2를 삭제한다고 할 때, 2가 1개 삭제되므로 1 3 4 5 뒤에 5(가장 뒤쪽에 있는 값 1개)만 들어가는 것이다. 즉 1 3 4 5 5 가 된다.
+또 vector에 1 2 2 2 3 4 가 들어있고 전체 범위에서 2를 삭제한다고 할 때, 2가 3개 삭제되므로 1 3 4 뒤에 2 3 4(가장 뒤쪽에 있는 값 3개)가 들어가는 것이다. 즉 1 3 4 2 3 4 가 된다.
+또한 vector에 1 2 2 3 4 가 들어있고 범위가 2 2 3 일 때 2를 삭제하면, 2가 2개 삭제되므로 1 3 4 가 되고 범위의 맨 뒤는 3이었으므로 3의 뒤에 대체값이 붙는다. 이 때 대체값은 주어진 범위에서 가장 뒤쪽에 있는 값 2개이므로 2 3 이 된다. 결국 1 3 4 에서 3 뒤에 2 3 이 붙게 되어 1 3 2 3 4 가 된다.
+
+vector의 특성상 값이 삭제되면 그 삭제된 공간 만큼 앞으로 당겨진다. 그러나 앞에서 말했듯 삭제된 값은 다른 값으로 대체되기 때문에, vector의 size나 capacity는 줄어들지 않고 그대로이다.
+
+
+#include <iostream> 
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	vector<int> v;
+	// v에 값 0~4 값 넣어주기 
+	for (int i=0; i<5; i++) {
+		v.push_back(i);
+	}
+	
+	// 삭제 전 vector 값들, size, capacity 출력 
+	cout << "삭제 전 vector 값들 : ";
+	for (int i=0; i<5; i++) {
+		cout << v[i] << " ";
+	}
+	cout << "\n";	
+	cout << "확인을 위해 뒤의 값들 추가로 출력 : ";
+	for (int i=5; i<10; i++) {
+		cout << v[i] << " ";
+	}
+	cout << "\n";	
+	cout << "size : " << v.size() << "\n";
+	cout << "capacity : " << v.capacity() << "\n";
+	cout << "============\n";
+	
+	// 삭제 : 0~4(처음부터 끝) 값 중 1 없애기 
+	remove(v.begin(), v.end(), 1);
+		
+	// 삭제 후 vector 값들, size, capacity 출력 
+	cout << "삭제 후 vector 값들 : ";
+	for (int i=0; i<5; i++) {
+		cout << v[i] << " ";
+	}
+	cout << "\n";
+	cout << "확인을 위해 뒤의 값들 추가로 출력 : ";
+	for (int i=5; i<10; i++) {
+		cout << v[i] << " ";
+	}
+	cout << "\n";	
+	cout << "size : " << v.size() << "\n";
+	cout << "capacity : " << v.capacity() << "\n";
+	
+    return 0;
+}
+
+
+
+erase 함수의 특징
+erase 함수를 통해 vector의 특정 값을 삭제한다고 할 때, 해당 값이 삭제가 되고 그만큼 vector의 size가 줄어든다.
+
+해당 값이 지워지면 container가 모든 요소를 새 위치로 재배치한다. 그렇기 때문에 size는 줄어도, capacity는 줄어들지 않는다.
